@@ -15,7 +15,9 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State {
   var value = "Question";
   void answerQuestion() {
-    value = "The new Question";
+    setState(() {
+      value = "The new Question";
+    });
     print('Answer Chosen Question');
   }
 
