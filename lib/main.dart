@@ -5,7 +5,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  var value = "Question";
   void answerQuestion() {
+    value = "The new Question";
     print('Answer Chosen Question');
   }
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
           title: Text("My First App"),
         ),
         body: Column(children: [
-          Text('The questions'),
+          Text(value),
           ElevatedButton(onPressed: answerQuestion, child: Text('Answer 1')),
           ElevatedButton(
               onPressed: () => print('Answer Question 2'),
