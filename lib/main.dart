@@ -14,12 +14,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State {
-  var _value = "Question";
+  var _questionIndex = 0;
   void _answerQuestion() {
     setState(() {
-      _value = "The new Question";
+      _questionIndex++;
     });
-    print('Answer Chosen Question');
   }
 
   @override
@@ -34,7 +33,7 @@ class _MyAppState extends State {
           title: Text("My First App"),
         ),
         body: Column(children: [
-          Question(_value),
+          Question(questions[_questionIndex]),
           ElevatedButton(onPressed: _answerQuestion, child: Text('Answer 1')),
           ElevatedButton(
               onPressed: () => print('Answer Question 2'),
