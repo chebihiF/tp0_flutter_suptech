@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz.dart';
+import 'result.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,13 +47,13 @@ class _MyAppState extends State<MyApp> {
   ];
 
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
-    if (_questionIndex < _questions.length) {
-      setState(() {
-        _questionIndex++;
-      });
-    }
+  void _answerQuestion(int score) {
+    setState(() {
+      _questionIndex++;
+    });
+    _totalScore += score;
   }
 
   @override
@@ -60,13 +61,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: Text("My First App"),
+        title: const Text("Quiz App"),
       ),
       body: _questionIndex < _questions.length
           ? Quiz(_questions, _questionIndex, _answerQuestion)
-          : const Center(
-              child: Text('No more questions'),
-            ),
+          : Result(_totalScore),
     ));
   }
 }
